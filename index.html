@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>ToDo App</title>
+  </head>
+  <body>
+    <main class="container">
+      <form id="add-todo">
+        <input
+          type="text"
+          name="todo"
+          id="todo-input"
+          placeholder="Add a todo"
+          list="todo-list-suggestions"
+        />
+        <datalist id="todo-list-suggestions">
+            <option value="Buy milk" />
+            <option value="Buy eggs" />
+            <option value="Buy bread" />
+        </datalist>
+        <div class="sec-inps">
+            <input
+              type="number"
+              min="1"
+              max="10"
+              id="priority-input"
+              placeholder="Enter Priority"
+              list="priority-suggestions"
+            />
+            <datalist id="priority-suggestions">
+                <option value="1" />
+                <option value="2" />
+                <option value="3" />
+                <option value="4" />
+                <option value="5" />
+                <option value="6" />
+                <option value="7" />
+                <option value="8" />
+                <option value="9" />
+                <option value="10" />
+            </datalist>
+            <div class="checkbox-div">
+                <input type="checkbox" name="completed" id="completed-checkbox" style="width: min-content;" />
+                <label for="completed-checkbox" >Completed</label>
+            </div>
+        </div>
+        <button type="submit">Add</button>
+      </form>
+      <hr>
+      <div class="sorts">
+        <h4>Sort by -</h4>
+        <button id="sort-by-priority">Priority</button>
+        <button id="sort-by-completed">Completed</button>
+        <button id="sort-by-oldest">Oldest</button>
+        <button id="sort-by-latest">Latest</button>
+      </div>
+      <div id="todo-list"></div>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
