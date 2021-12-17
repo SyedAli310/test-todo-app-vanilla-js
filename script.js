@@ -32,7 +32,7 @@ $(document).ready(() => {
   window.onload = renderTodos();
   // Add todo
   function addTodo(todo, completed, priority) {
-    const todo_id = generateKey(8, false).toLowerCase();
+    const todo_id = generateKey(8, true,4).toLowerCase();
     const dateAdded = new Date();
     if (!todo || todo.length == 0) {
       alert("Please enter a todo");
