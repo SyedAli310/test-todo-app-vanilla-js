@@ -4,68 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- ion icon cdn -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+
     <link rel="stylesheet" href="style.css" />
     <title>ToDo App</title>
   </head>
   <body>
     <main class="container">
-      <form id="add-todo">
-        <label for="todo-input">Enter ToDo</label>
-        <input
-          type="text"
-          name="todo"
-          id="todo-input"
-          placeholder="Enter a todo..."
-          list="todo-list-suggestions"
-        />
-        <datalist id="todo-list-suggestions">
-          <option value="Buy milk" />
-          <option value="Buy eggs" />
-          <option value="Buy bread" />
-        </datalist>
-        <div class="sec-inps">
-          <label for="priority-input">Select Priority</label>
-          <input
-            type="range"
-            min="1"
-            max="10"
-            id="priority-input"
-            placeholder="Enter Priority"
-            list="priority-suggestions"
-          />
-          <datalist id="priority-suggestions">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </datalist>
-          <div class="checkbox-div">
-            <input
-              type="checkbox"
-              name="completed"
-              id="completed-checkbox"
-              style="width: min-content"
-            />
-            <label for="completed-checkbox">Completed</label>
-          </div>
-        </div>
-        <button type="submit">Add</button>
-      </form>
+      <button id="open-add-todo">Add todo</button>
       <hr />
       <div class="sorts">
         <h4>Sort by -</h4>
@@ -76,8 +21,12 @@
       </div>
       <div class="info">
         <p class="total-todos-p">Total - <span id="total-todos"></span></p>
-        <p class="total-completed-p">Completed - <span id="total-completed"></span></p>
-        <p class="total-pending-p">Pending - <span id="total-pending"></span></p>
+        <p class="total-completed-p">
+          Completed - <span id="total-completed"></span>
+        </p>
+        <p class="total-pending-p">
+          Pending - <span id="total-pending"></span>
+        </p>
       </div>
       <div id="todo-list"></div>
     </main>
@@ -88,7 +37,9 @@
           <ion-icon name="close-outline"></ion-icon>
         </button>
         <div class="modal-header">
-          <h2 style="margin-block-start: unset; margin-block-end:unset;">Edit ToDo</h2>
+          <h2 style="margin-block-start: unset; margin-block-end: unset">
+            Edit ToDo
+          </h2>
         </div>
         <div class="modal-body">
           <form id="edit-todo">
@@ -99,15 +50,20 @@
               id="edit-todo-input"
               placeholder="Update todo"
             />
-            <label for="edit-priority-input">Update Priority</label>
+            <label for="edit-priority-input"
+                >Update Priority - <span id="prio-selection-realtime-view-upd"></span
+              ></label>
             <input
-              type="number"
-              min="1"
-              max="10"
-              id="edit-priority-input"
-              placeholder="Update Priority"
-              list="priority-suggestions"
-            />
+            type="range"
+            min="1"
+            max="10"
+            step="1"
+            id="edit-priority-input"
+            oninput="javascript:showSliderValUpd(this.value);"
+            onchange="javascript:showSliderValUpd(this.value);"
+            placeholder="Update Priority"
+            list="priority-suggestions"
+          />
 
             <div class="checkbox-div">
               <input
@@ -124,11 +80,97 @@
         </div>
       </div>
     </div>
+
+    <div class="modal add-todo-modal">
+      <div class="modal-content">
+        <button class="modal-close-btn">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <div class="modal-header">
+          <h2 style="margin-block-start: unset; margin-block-end: unset">
+            Add ToDo
+          </h2>
+        </div>
+        <div class="modal-body">
+          <form id="add-todo">
+            <label for="todo-input">Enter ToDo</label>
+            <input
+              type="text"
+              name="todo"
+              id="todo-input"
+              placeholder="Enter a todo..."
+              list="todo-list-suggestions"
+            />
+            <datalist id="todo-list-suggestions">
+              <option value="Buy milk" />
+              <option value="Buy eggs" />
+              <option value="Buy bread" />
+            </datalist>
+            <div class="sec-inps">
+              <label for="priority-input"
+                >Select Priority - <span id="prio-selection-realtime-view-add"></span
+              ></label>
+              <input
+                type="range"
+                min="1"
+                max="10"
+                step="1"
+                id="priority-input"
+                oninput="javascript:showSliderValAdd(this.value);"
+                onchange="javascript:showSliderValAdd(this.value);"
+                placeholder="Enter Priority"
+                list="priority-suggestions"
+              />
+              <datalist id="priority-suggestions">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </datalist>
+              <div class="checkbox-div">
+                <input
+                  type="checkbox"
+                  name="completed"
+                  id="completed-checkbox"
+                  style="width: min-content"
+                />
+                <label for="completed-checkbox">Completed</label>
+              </div>
+            </div>
+            <button type="submit">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- ion icon cdn -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"
     ></script>
+    <script>
+      function showSliderValAdd() {
+        $("#prio-selection-realtime-view-add").text(' '+$("#priority-input").val());
+      }
+      function showSliderValUpd() {
+        $("#prio-selection-realtime-view-upd").text(' '+$("#edit-priority-input").val());
+      }
+      showSliderValAdd();
+    </script>
     <script src="script.js"></script>
   </body>
 </html>

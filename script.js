@@ -62,6 +62,7 @@ $(document).ready(() => {
       localStorage.setItem("stored__todos", JSON.stringify(all__todos));
       $("#todo-input").val("");
       $("#priority-input").val("");
+      $(".add-todo-modal").removeClass("active");
       renderTodos();
     }
   }
@@ -91,9 +92,20 @@ $(document).ready(() => {
       "checked",
       toBeEdited.completed
     );
+    console.log(id);
     $("#edit-todo-submit-btn").attr("data-id", id);
     $(".edit-todo-modal").addClass("active");
+    showSliderValUpd();
   }
+
+  function showSliderValUpd() {
+    $("#prio-selection-realtime-view-upd").text(' '+$("#edit-priority-input").val());
+  }
+
+  $("#open-add-todo").click(()=>{
+    console.log("open add todo");
+    $(".add-todo-modal").addClass("active");
+  })
 
   // edit todo submit handler
   $("#edit-todo").on("submit", (e) => {
@@ -102,6 +114,7 @@ $(document).ready(() => {
     const completed = $("#edit-completed-checkbox").is(":checked");
     const priority = $("#edit-priority-input").val();
     const id = $("#edit-todo-submit-btn").attr("data-id");
+    console.log(priority);
     const toBeEdited = all__todos.find((todo) => todo.id === id);
     toBeEdited.todo = todo;
     toBeEdited.completed = completed;
@@ -128,11 +141,11 @@ $(document).ready(() => {
 
   // format date function
   function formatDate(date) {
-    if(new Date(date)){
-      const preFormatted = new Date(date).toDateString().split(' ');
+    if (new Date(date)) {
+      const preFormatted = new Date(date).toDateString().split(" ");
       preFormatted.shift();
-      preFormatted[1] = preFormatted[1]+', ';
-      return preFormatted.join(' ');
+      preFormatted[1] = preFormatted[1] + ", ";
+      return preFormatted.join(" ");
     } else {
       return "Some error occured while formatting the date" + date;
     }
@@ -171,8 +184,14 @@ $(document).ready(() => {
         todo_li.setAttribute("data-id", todo.id);
         todo_li.innerHTML = `
                 <div class="todo-el-header">
-                    <span class="todo-el-priority">Priority - ${todo.priority}</span>
-                    <span class='todo-status' style='color:${todo.completed ? "var(--TEXT_SUCCESS)" : "var(--TEXT_DANGER)"}'>
+                    <span class="todo-el-priority">Priority - ${
+                      todo.priority
+                    }</span>
+                    <span class='todo-status' style='color:${
+                      todo.completed
+                        ? "var(--TEXT_SUCCESS)"
+                        : "var(--TEXT_DANGER)"
+                    }'>
                       ${todo.completed ? "Completed" : "Pending"} 
                     </span>
                 </div>
@@ -180,7 +199,12 @@ $(document).ready(() => {
                 <div class="todo-el-body">
                   <span>
                     <span style='color:royalblue;'>Updated:</span> 
-                    <span style='color:unset !important;'>${formatDate(todo.lastUpdated)} at ${new Date(todo.lastUpdated).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})}</span>
+                    <span style='color:unset !important;'>${formatDate(
+                      todo.lastUpdated
+                    )} at ${new Date(todo.lastUpdated).toLocaleTimeString(
+          navigator.language,
+          { hour: "2-digit", minute: "2-digit" }
+        )}</span>
                   </span>
                   <h2 class="todo-el-title">
                     ${todo.todo}
@@ -191,15 +215,24 @@ $(document).ready(() => {
                   <div class='date-time'>
                     <span>
                       <span style='color:var(--TEXT_SUCCESS);'>Added:</span> 
-                      <span style='color:unset !important;'>${formatDate(todo.dateAdded)} at ${new Date(todo.dateAdded).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})}</span>
+                      <span style='color:unset !important;'>${formatDate(
+                        todo.dateAdded
+                      )} at ${new Date(todo.dateAdded).toLocaleTimeString(
+          navigator.language,
+          { hour: "2-digit", minute: "2-digit" }
+        )}</span>
                     </span>
                     
                   </div>
                   <div class='cta-buttons'>
-                    <button class='delete-todo-btn' todo-id='${todo.id}' title='Delete ToDo'>
+                    <button class='delete-todo-btn' todo-id='${
+                      todo.id
+                    }' title='Delete ToDo'>
                       <ion-icon name="trash-outline"></ion-icon>
                     </button>
-                    <button class='edit-todo-btn' todo-id='${todo.id}' title='Edit ToDo'>
+                    <button class='edit-todo-btn' todo-id='${
+                      todo.id
+                    }' title='Edit ToDo'>
                       <ion-icon name="create-outline"></ion-icon>
                     </button>
                   </div>
