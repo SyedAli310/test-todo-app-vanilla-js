@@ -5,9 +5,9 @@ $(document).ready(() => {
     "color: limegreen; font-size: 14px;"
   );
 
-  const mainHeaderHeight = parseFloat((document.querySelector('.main-header').offsetHeight)/16);
+  const mainHeaderHeight = parseFloat((document.querySelector('.main-header').offsetHeight));
   const sortAndFilter = document.querySelector('.sort-and-info');
-  sortAndFilter.style.top = `${mainHeaderHeight}rem`;
+  sortAndFilter.style.top = `${mainHeaderHeight}px`;
 
   const allModals = document.querySelectorAll(".modal");
 

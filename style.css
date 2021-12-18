@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 :root {
   --MAIN_BG: #c0bbbb;
@@ -14,7 +14,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 ion-icon {
@@ -141,7 +141,6 @@ ion-icon {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 0.25rem 0;
 }
 
 #sort-dropdown-toggle{
@@ -483,6 +482,11 @@ input {
   }
   .modal-body {
     height: 60vh;
+  }
+}
+@media (max-width: 550px) {
+  .sort-and-info .container{
+    padding-top: 1rem;
   }
 }
 @-webkit-keyframes modalAppear {
