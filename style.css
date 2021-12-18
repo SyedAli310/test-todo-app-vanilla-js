@@ -46,6 +46,23 @@ ion-icon {
   display: flex;
   transition: all ease 300ms;
 }
+#logo-animated:hover{
+  animation: test 1500ms ease-in forwards;
+  outline-offset: 0.25rem;
+  border-radius: 4px;
+}
+@keyframes test {
+  0%{
+    outline: 2px solid var(--TEXT_SUCCESS);
+  }
+  50%{
+    outline: 2px solid var(--TEXT_DANGER);
+  }
+  100%{
+    outline: 2px solid royalblue;
+  }
+  
+}
 #logo-animated > div {
   transition: all ease 300ms;
 }
@@ -55,23 +72,23 @@ ion-icon {
 }
 @keyframes wobble {
   0% {
-    transform: translateY(0%);
+    transform: translateY(0%) scale(1);
     text-decoration: none;
   }
   25% {
-    transform: translateY(10%);
+    transform: translateY(10%) scale(1.05);
     text-decoration: line-through;
   }
   50% {
-    transform: translateY(-10%);
+    transform: translateY(-10%) scale(1.05);
     text-decoration: line-through;
   }
   75% {
-    transform: translateY(10%);
+    transform: translateY(10%) scale(1.05);
     text-decoration: line-through;
   }
   100% {
-    transform: translateY(0%);
+    transform: translateY(0%) scale(1);
     text-decoration: none;
   }
 }
@@ -192,7 +209,7 @@ ion-icon {
   transform: translateY(20%);
   flex-direction: column;
   background-color: var(--MAIN_BG);
-  outline: 2px solid var(--LIGHT_BLACK);
+  outline: 1.25px solid var(--LIGHT_BLACK);
   color: var(--BLACK);
   z-index: 10;
   border-radius: 10px;
