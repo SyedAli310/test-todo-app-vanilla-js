@@ -4,7 +4,7 @@ $(document).ready(() => {
     "%cApp Initialized Successfully!",
     "color: limegreen; font-size: 14px;"
   );
-
+  const days = ['Sunday😎', 'Monday🧐', 'Tuesday😒', 'Wednesday🤨', 'Thursday😐', 'Friday😁', 'Saturday😎'];
   const mainHeaderHeight = parseFloat((document.querySelector('.main-header').offsetHeight));
   const sortAndFilter = document.querySelector('.sort-and-info');
   sortAndFilter.style.top = `${mainHeaderHeight}px`;
@@ -162,6 +162,8 @@ $(document).ready(() => {
       return "Some error occured while formatting the date" + date;
     }
   }
+
+  $('.today-date').text(formatDate(new Date())+ ' - Happy '+days[new Date().getDay()]);
 
   // Render todos
   function renderTodos(byPriority, byCompleted, byDate) {

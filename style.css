@@ -27,6 +27,11 @@ ion-icon {
   margin: 0 auto;
 }
 
+.today-date{
+  font-size: 1.5rem;
+  color: var(--BLACK);
+}
+
 .main-header {
   width: 100%;
   position: sticky;
