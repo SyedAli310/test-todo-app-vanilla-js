@@ -106,6 +106,8 @@ $(document).ready(() => {
     toBeEdited.todo = todo;
     toBeEdited.completed = completed;
     toBeEdited.priority = priority;
+    toBeEdited.lastUpdated = new Date();
+    console.log(toBeEdited);
     localStorage.setItem("stored__todos", JSON.stringify(all__todos));
     renderTodos();
     $(".edit-todo-modal").removeClass("active");
@@ -178,7 +180,7 @@ $(document).ready(() => {
                 <div class="todo-el-body">
                   <span>
                     <span style='color:royalblue;'>Updated:</span> 
-                    <span style='color:unset !important;'>${formatDate(todo.dateAdded)} at ${new Date(todo.dateAdded).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})}</span>
+                    <span style='color:unset !important;'>${formatDate(todo.lastUpdated)} at ${new Date(todo.lastUpdated).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})}</span>
                   </span>
                   <h2 class="todo-el-title">
                     ${todo.todo}

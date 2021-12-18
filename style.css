@@ -24,7 +24,6 @@ ion-icon{
   width: 100%;
   max-width: 80vw;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 #todo-list {
@@ -105,9 +104,11 @@ ion-icon{
   background-color: transparent;
   padding: 1rem 0;
 }
-#add-todo input {
-  width: 100%;
-  padding: 10px 20px;
+#add-todo input:not([type="checkbox"]) {
+  min-width: 90%;
+  width: auto;
+  height: 2.5rem;
+  padding-left: 1rem;
   border: none;
   margin-bottom: 1rem;
   border-radius: 10px;
@@ -118,6 +119,10 @@ ion-icon{
 #add-todo input:focus {
   outline: 2px solid lightseagreen;
   outline-offset: 2px;
+}
+#add-todo label{
+  margin-bottom: 0.5rem;
+  text-align: start;
 }
 #add-todo button {
   padding: 10px 20px;
@@ -133,12 +138,12 @@ ion-icon{
   color: #fff;
 }
 .sec-inps {
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 2rem;
   flex-wrap: wrap;
 }
 #priority-input {
@@ -146,9 +151,9 @@ ion-icon{
 }
 .checkbox-div {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 100%;
   margin-bottom: 1rem;
 }
 

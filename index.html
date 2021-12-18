@@ -19,11 +19,12 @@
   <body>
     <main class="container">
       <form id="add-todo">
+        <label for="todo-input">Enter ToDo</label>
         <input
           type="text"
           name="todo"
           id="todo-input"
-          placeholder="Add a todo"
+          placeholder="Enter a todo..."
           list="todo-list-suggestions"
         />
         <datalist id="todo-list-suggestions">
@@ -32,6 +33,7 @@
           <option value="Buy bread" />
         </datalist>
         <div class="sec-inps">
+          <label for="priority-input">Select Priority</label>
           <input
             type="range"
             min="1"
