@@ -130,6 +130,100 @@ ion-icon {
   transform: rotate(180deg) scale(1.2);
 }
 
+.sort-and-info{
+  width: auto;
+  position: sticky;
+  background-color: var(--MAIN_BG);
+  z-index: 10;
+}
+.sort-and-info .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0.25rem 0;
+}
+
+#sort-dropdown-toggle{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  background-color: var(--WHITE);
+  color: var(--BLACK);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all ease 300ms;
+}
+#sort-dropdown-toggle:active{
+  transform: scale(0.95);
+}
+
+#sort-dropdown-toggle:focus-visible{
+  outline: 1.5px solid royalblue;
+  outline-offset: 1.5px;
+}
+#sort-dropdown-toggle.active{
+  outline: 1.5px solid royalblue;
+  outline-offset: 1.5px;
+}
+
+#sort-dropdown-toggle ion-icon{
+  transition: all ease 300ms;
+}
+#sort-dropdown-toggle.active > ion-icon{
+  transform: rotate(180deg);
+}
+
+.sort-and-info .sorts{
+  position: relative;
+}
+.sort-and-info .sorts .sort-dropdown{
+  list-style-type: none;
+  position: absolute;
+  top:100%;
+  /* right: 0; */
+  width: auto;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20%);
+  flex-direction: column;
+  background-color: var(--MAIN_BG);
+  outline: 2px solid var(--LIGHT_BLACK);
+  color: var(--BLACK);
+  z-index: 10;
+  border-radius: 10px;
+  padding: 0 !important;
+  pointer-events: none;
+  overflow: hidden;
+  transition: all ease 300ms;
+}
+.sort-and-info .sorts .sort-dropdown.active{
+  pointer-events: all;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.sort-and-info .sorts .sort-dropdown li{
+  display: inline-block;
+  list-style-type: none;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid royalblue;
+  margin: 0 ;
+  cursor: pointer;
+  transition: all ease 300ms;
+}
+.sort-and-info .sorts .sort-dropdown li:last-child{
+  border-bottom: none;
+}
+.sort-and-info .sorts .sort-dropdown li:hover{
+  color: var(--WHITE);
+  background-color: royalblue;
+}
+
 #todo-list {
   width: 100%;
   height: 100%;

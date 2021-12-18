@@ -22,23 +22,33 @@
           </button>
       </div>
     </div>
+
+    <div class="sort-and-info">
+      <div class="container">
+        <div class="info">
+          <p class="total-todos-p">Total <span id="total-todos"></span></p>
+          <p class="total-completed-p">
+            Completed <span id="total-completed"></span>
+          </p>
+          <p class="total-pending-p">
+            Pending <span id="total-pending"></span>
+          </p>
+      
+        </div>
+  
+        <div class="sorts">
+          <button id="sort-dropdown-toggle">Sort by <ion-icon name="caret-down-outline"></ion-icon></button>
+          <ul class="sort-dropdown">
+            <li class="sort-dropdown-item" id="sort-by-priority">Priority</li>
+            <li class="sort-dropdown-item" id="sort-by-completed">Completed</li>
+            <li class="sort-dropdown-item" id="sort-by-oldest">Oldest</li>
+            <li class="sort-dropdown-item" id="sort-by-latest">Latest</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <main class="container">
-      <div class="sorts">
-        <h4>Sort by -</h4>
-        <button id="sort-by-priority">Priority</button>
-        <button id="sort-by-completed">Completed</button>
-        <button id="sort-by-oldest">Oldest</button>
-        <button id="sort-by-latest">Latest</button>
-      </div>
-      <div class="info">
-        <p class="total-todos-p">Total - <span id="total-todos"></span></p>
-        <p class="total-completed-p">
-          Completed - <span id="total-completed"></span>
-        </p>
-        <p class="total-pending-p">
-          Pending - <span id="total-pending"></span>
-        </p>
-      </div>
       <div id="todo-list"></div>
     </main>
 

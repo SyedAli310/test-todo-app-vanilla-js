@@ -5,6 +5,10 @@ $(document).ready(() => {
     "color: limegreen; font-size: 14px;"
   );
 
+  const mainHeaderHeight = parseFloat((document.querySelector('.main-header').offsetHeight)/16);
+  const sortAndFilter = document.querySelector('.sort-and-info');
+  sortAndFilter.style.top = `${mainHeaderHeight}rem`;
+
   const allModals = document.querySelectorAll(".modal");
 
   // function to generate random id for todo
@@ -104,6 +108,15 @@ $(document).ready(() => {
 
   $("#open-add-todo").click(()=>{
     $(".add-todo-modal").addClass("active");
+  })
+
+  $('#sort-dropdown-toggle').click(()=>{
+    $('.sort-dropdown').toggleClass('active');
+    if($('.sort-dropdown').hasClass('active')){
+      $('#sort-dropdown-toggle').addClass('active');
+    }else{
+      $('#sort-dropdown-toggle').removeClass('active');
+    }
   })
 
   // edit todo submit handler
