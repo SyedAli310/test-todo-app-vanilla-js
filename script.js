@@ -277,4 +277,28 @@ $(document).ready(() => {
       modal.classList.remove("active");
     });
   });
+
+  function setSwitch(){
+    $('#dark-mode-switch').text($("#dark-mode-switch").attr("mode"))
+  }
+  setSwitch()
+  //dark mode switcher
+  $("#dark-mode-switch").click(() => {
+    if ($("#dark-mode-switch").attr("mode") == "light") {
+      $("#dark-mode-switch").attr("mode", "dark");
+      $(':root').css('--MAIN_BG', '#000000');
+      $(':root').css('--WHITE', '#1b1b1b');
+      $(':root').css('--LIGHT_BLACK', '#ffffff');
+      $(':root').css('--BLACK', '#ffffff');
+      setSwitch();
+    } 
+    else if($("#dark-mode-switch").attr("mode") == "dark") {
+      $("#dark-mode-switch").attr("mode", "light");
+      $(':root').css('--MAIN_BG', '#c0bbbb');
+      $(':root').css('--WHITE', '#ffffff');
+      $(':root').css('--LIGHT_BLACK', '#1b1b1b');
+      $(':root').css('--BLACK', '#000000');
+      setSwitch();
+    }
+  });
 });

@@ -32,7 +32,7 @@ ion-icon {
   position: sticky;
   top: 0;
   background-color: var(--MAIN_BG);
-  border-bottom: 1px solid var(--LIGHT_BLACK);
+  border-bottom: 1px solid royalblue;
   z-index: 10;
 }
 .main-header .container {
@@ -85,7 +85,7 @@ ion-icon {
   animation-delay: 1s;
 }
 
-.main-header button {
+.main-header #open-add-todo {
   position: relative;
   background-color: var(--TEXT_SUCCESS);
   border: none;
@@ -95,7 +95,7 @@ ion-icon {
   cursor: pointer;
   transition: all ease 300ms;
 }
-.main-header button::after {
+.main-header #open-add-todo::after {
   content: attr(data-title);
   word-wrap: none;
   position: absolute;
@@ -108,25 +108,25 @@ ion-icon {
   height: auto;
   padding: 0.5rem;
   border-radius: 3px;
-  background-color: var(--LIGHT_BLACK);
-  color: var(--WHITE);
+  background-color: #1b1b1b;
+  color: white;
   pointer-events: none;
   transition: all ease 300ms;
 }
 
-.main-header button:hover::after {
+.main-header #open-add-todo:hover::after {
   /* display: block; */
   transform: translateY(-50%) translateX(0);
   opacity: 1;
 }
-.main-header button:hover {
+.main-header #open-add-todo:hover {
   filter: brightness(90%);
 }
-.main-header button ion-icon {
+.main-header #open-add-todo ion-icon {
   font-size: x-large;
   transition: all ease 300ms;
 }
-.main-header button:hover > ion-icon {
+.main-header #open-add-todo:hover > ion-icon {
   transform: rotate(180deg) scale(1.2);
 }
 
@@ -166,14 +166,15 @@ ion-icon {
   outline-offset: 1.5px;
 }
 #sort-dropdown-toggle.active{
+  color: royalblue;
   outline: 1.5px solid royalblue;
   outline-offset: 1.5px;
 }
 
-#sort-dropdown-toggle ion-icon{
+#sort-dropdown-toggle ion-icon[name='caret-down-outline']{
   transition: all ease 300ms;
 }
-#sort-dropdown-toggle.active > ion-icon{
+#sort-dropdown-toggle.active > ion-icon[name='caret-down-outline']{
   transform: rotate(180deg);
 }
 
@@ -246,8 +247,8 @@ ion-icon {
   align-items: center;
   padding: 1rem 0.5rem;
   margin-bottom: 1rem;
-  background-color: #fff;
-  color: #1b1b1b;
+  background-color: var(--WHITE);
+  color: var(--LIGHT_BLACK);
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
@@ -328,8 +329,8 @@ ion-icon {
   border: none;
   margin-bottom: 1rem;
   border-radius: 10px;
-  background-color: #fff;
-  color: #1b1b1b;
+  background-color: var(--WHITE);
+  color: var(--LIGHT_BLACK);
   font-size: 1rem;
 }
 #prio-selection-realtime-view {
@@ -348,12 +349,12 @@ ion-icon {
   border: none;
   border-radius: 10px;
   background-color: lightseagreen;
-  color: #1b1b1b;
+  color: var(--LIGHT_BLACK);
   font-size: 1rem;
   transition: all 0.3s ease-in-out;
 }
 #add-todo button:hover {
-  background-color: #1b1b1b;
+  background-color: var(--LIGHT_BLACK);
   color: #fff;
 }
 .sec-inps {
@@ -399,8 +400,8 @@ ion-icon {
   margin-block-start: unset !important;
   margin-block-end: unset !important;
   background-color: var(--WHITE);
-  color: darkslategrey;
-  padding: 0.5rem;
+  color: var(--LIGHT_BLACK);
+  padding: 0.25rem 0.35rem;
   border-radius: 4px;
 }
 .info p span {
@@ -472,7 +473,7 @@ input {
   margin: 5rem auto;
   width: 60%;
   border-radius: 5px;
-  border: 2px solid var(--BG_SHADE_LIGHTER);
+  border: 2px solid royalblue;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation: modalAppear 0.5s ease;
 }
@@ -508,7 +509,7 @@ input {
 .modal-header {
   position: relative;
   border-bottom: 1.5px solid var(--LIGHT_BLACK);
-  color: var(--MAIN_ACCENT);
+  color: var(--BLACK);
 }
 .modal-header h2 {
   display: flex;
@@ -568,7 +569,7 @@ input {
   width: 5px;
 }
 .modal-body::-webkit-scrollbar-thumb {
-  background-color: var(--BG_SHADE_LIGHTER);
+  background-color: var(--LIGHT_BLACK);
   border-radius: 10px;
 }
 .modal-footer {
@@ -598,8 +599,8 @@ input {
   border: none;
   margin-bottom: 1.5rem;
   border-radius: 10px;
-  background-color: #fff;
-  color: #1b1b1b;
+  background-color: var(--WHITE);
+  color: var(--LIGHT_BLACK);
   font-size: 1rem;
 }
 #edit-todo label {
@@ -615,11 +616,11 @@ input {
   border: none;
   border-radius: 10px;
   background-color: lightseagreen;
-  color: #1b1b1b;
+  color:var(--LIGHT_BLACK);
   font-size: 1rem;
   transition: all 0.3s ease-in-out;
 }
 #edit-todo button:hover {
-  background-color: #1b1b1b;
-  color: #fff;
+  background-color: var(--LIGHT_BLACK);
+  color: var(--WHITE);
 }
