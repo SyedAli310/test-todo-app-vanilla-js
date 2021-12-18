@@ -32,9 +32,12 @@ ion-icon{
   flex-wrap: wrap;
   gap: 1.5rem;
   background-color: transparent;
-  padding: 20px;
+  padding: 1.5rem auto;
+  margin: 1.5rem auto;
 }
 .todo-el {
+  width: 100%;
+  position: relative;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -47,6 +50,46 @@ ion-icon{
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
+
+.todo-el-header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.todo-el-priority{
+  color: royalblue;
+  font-weight: bold;
+}
+.todo-status{
+  font-weight: bold;
+}
+
+.todo-el-body{
+  width: 100%;
+}
+.todo-el-body .todo-el-title{}
+
+.todo-el-footer{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap:1rem;
+}
+.todo-el-footer .date-time{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.todo-el-footer .cta-buttons{
+  width: auto;
+  text-align: center;
+}
+
+
+
 #add-todo {
   width: 100%;
   height: 100%;
@@ -54,8 +97,9 @@ ion-icon{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   background-color: transparent;
-  padding: 20px;
+  padding: 1rem 0;
 }
 #add-todo input {
   width: 100%;
@@ -91,6 +135,7 @@ ion-icon{
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 #priority-input {
   min-width: 15rem;
@@ -100,6 +145,7 @@ ion-icon{
   justify-content: start;
   align-items: center;
   width: 50%;
+  margin-bottom: 1rem;
 }
 
 .sorts {
@@ -126,7 +172,7 @@ ion-icon{
   margin-block-start: unset !important;
   margin-block-end: unset !important;
   background-color: var(--WHITE);
-  color: var(--LIGHT_BLACK);
+  color: darkslategrey;
   padding: 0.5rem 1rem 0rem 1rem;
   border-radius: 10px;
 }
@@ -134,14 +180,24 @@ ion-icon{
   font-size: 1rem;
   font-weight: bold;
 }
+
 .info #total-todos{
   color: royalblue;
+}
+.info .total-todos-p{
+  outline: 2px solid royalblue;
 }
 .info #total-completed{
   color: var(--TEXT_SUCCESS);
 }
+.info .total-completed-p{
+  outline: 2px solid var(--TEXT_SUCCESS);
+}
 .info #total-pending{
   color: var(--TEXT_DANGER);
+}
+.info .total-pending-p{
+  outline: 2px solid var(--TEXT_DANGER);
 }
 
 .delete-todo-btn, .edit-todo-btn{
@@ -291,22 +347,21 @@ ion-icon{
 }
 /* modal styles end  */
 
-#add-todo {
+#edit-todo {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: transparent;
-  padding: 20px;
 }
-#edit-todo input {
+#edit-todo input:not([type="checkbox"]) {
   width:100%;
   flex-wrap: 1;
   padding: 10px 0px 10px 10px;
   border: none;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   border-radius: 10px;
   background-color: #fff;
   color: #1b1b1b;

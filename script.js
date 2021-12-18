@@ -154,37 +154,42 @@ $(document).ready(() => {
       all__todos.forEach((todo, index) => {
         const todo_li = document.createElement("li");
         todo_li.classList.add("todo-el");
+        todo_li.setAttribute("data-id", todo.id);
         todo_li.innerHTML = `
                 <div class="todo-el-header">
-                    <h2 class="todo-el-title">
-                    <span style='color:grey; font-size:small;'>#${
-                      index + 1
-                    }</span>
-                    ${todo.todo}</h2>
-                    </div>
-                    <div class="todo-el-footer">
-                    <span class="todo-el-priority">Priority- ${
-                      todo.priority
-                    } |</span>
-                    <span style='color:${
-                      todo.completed
-                        ? "var(--TEXT_SUCCESS)"
-                        : "var(--TEXT_DANGER)"
-                    }'>${todo.completed ? "Completed" : "Pending"} </span>
-                    |
-                    <button class='delete-todo-btn' todo-id='${
-                      todo.id
-                    }' title='Delete ToDo'><ion-icon name="trash-outline"></ion-icon></button>
-                    |
-                    <button class='edit-todo-btn' todo-id='${
-                      todo.id
-                    }' title='Edit ToDo'><ion-icon name="create-outline"></ion-icon></button>
+                    <span class="todo-el-priority">Priority - ${todo.priority}</span>
+                    <span class='todo-status' style='color:${todo.completed ? "var(--TEXT_SUCCESS)" : "var(--TEXT_DANGER)"}'>
+                      ${todo.completed ? "Completed" : "Pending"} 
+                    </span>
                 </div>
-                <span>Last updated: ${new Date(
-                  todo.dateAdded
-                ).toDateString()}, at ${new Date(
-          todo.dateAdded
-        ).toLocaleTimeString()}</span>
+                <hr style='width:100%;'>
+                <div class="todo-el-body">
+                  <span>
+                    <span style='color:royalblue;'>Updated:</span> 
+                    <span style='color:unset !important;'>${new Date(todo.dateAdded).toDateString()}, at ${new Date(todo.dateAdded).toLocaleTimeString()}</span>
+                  </span>
+                  <h2 class="todo-el-title">
+                    ${todo.todo}
+                  </h2>
+                </div>
+                
+                <div class="todo-el-footer">
+                  <div class='date-time'>
+                    <span>
+                      <span style='color:var(--TEXT_SUCCESS);'>Added:</span> 
+                      <span style='color:unset !important;'>${new Date(todo.dateAdded).toDateString()}, at ${new Date(todo.dateAdded).toLocaleTimeString()}</span>
+                    </span>
+                    
+                  </div>
+                  <div class='cta-buttons'>
+                    <button class='delete-todo-btn' todo-id='${todo.id}' title='Delete ToDo'>
+                      <ion-icon name="trash-outline"></ion-icon>
+                    </button>
+                    <button class='edit-todo-btn' todo-id='${todo.id}' title='Edit ToDo'>
+                      <ion-icon name="create-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
                 `;
         todo.completed
           ? (todo_li.style.boxShadow = "3px 3px 0px var(--TEXT_SUCCESS)")
