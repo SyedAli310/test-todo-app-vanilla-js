@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ion icon cdn -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
     <link rel="stylesheet" href="style.css" />
     <title>ToDo App</title>
   </head>
@@ -18,39 +27,44 @@
           list="todo-list-suggestions"
         />
         <datalist id="todo-list-suggestions">
-            <option value="Buy milk" />
-            <option value="Buy eggs" />
-            <option value="Buy bread" />
+          <option value="Buy milk" />
+          <option value="Buy eggs" />
+          <option value="Buy bread" />
         </datalist>
         <div class="sec-inps">
+          <input
+            type="number"
+            min="1"
+            max="10"
+            id="priority-input"
+            placeholder="Enter Priority"
+            list="priority-suggestions"
+          />
+          <datalist id="priority-suggestions">
+            <option value="1" />
+            <option value="2" />
+            <option value="3" />
+            <option value="4" />
+            <option value="5" />
+            <option value="6" />
+            <option value="7" />
+            <option value="8" />
+            <option value="9" />
+            <option value="10" />
+          </datalist>
+          <div class="checkbox-div">
             <input
-              type="number"
-              min="1"
-              max="10"
-              id="priority-input"
-              placeholder="Enter Priority"
-              list="priority-suggestions"
+              type="checkbox"
+              name="completed"
+              id="completed-checkbox"
+              style="width: min-content"
             />
-            <datalist id="priority-suggestions">
-                <option value="1" />
-                <option value="2" />
-                <option value="3" />
-                <option value="4" />
-                <option value="5" />
-                <option value="6" />
-                <option value="7" />
-                <option value="8" />
-                <option value="9" />
-                <option value="10" />
-            </datalist>
-            <div class="checkbox-div">
-                <input type="checkbox" name="completed" id="completed-checkbox" style="width: min-content;" />
-                <label for="completed-checkbox" >Completed</label>
-            </div>
+            <label for="completed-checkbox">Completed</label>
+          </div>
         </div>
         <button type="submit">Add</button>
       </form>
-      <hr>
+      <hr />
       <div class="sorts">
         <h4>Sort by -</h4>
         <button id="sort-by-priority">Priority</button>
@@ -58,9 +72,56 @@
         <button id="sort-by-oldest">Oldest</button>
         <button id="sort-by-latest">Latest</button>
       </div>
+      <div class="info">
+        <p>Total <span id="total-todos"></span></p>
+        <p>Completed <span id="total-completed"></span></p>
+        <p>Pending <span id="total-pending"></span></p>
+      </div>
       <div id="todo-list"></div>
     </main>
 
+    <div class="modal edit-todo-modal">
+      <div class="modal-content">
+        <button class="modal-close-btn">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <div class="modal-header">
+          <h2 style="margin-block-start: unset; margin-block-end:unset;">Edit ToDo</h2>
+        </div>
+        <div class="modal-body">
+          <form id="edit-todo">
+            <label for="edit-todo-input">Update ToDo</label>
+            <input
+              type="text"
+              name="todo"
+              id="edit-todo-input"
+              placeholder="Update todo"
+            />
+            <label for="edit-priority-input">Update Priority</label>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              id="edit-priority-input"
+              placeholder="Update Priority"
+              list="priority-suggestions"
+            />
+
+            <div class="checkbox-div">
+              <input
+                type="checkbox"
+                name="completed"
+                id="edit-completed-checkbox"
+                style="width: min-content"
+              />
+              <label for="edit-completed-checkbox">Completed</label>
+            </div>
+
+            <button type="submit" id="edit-todo-submit-btn">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

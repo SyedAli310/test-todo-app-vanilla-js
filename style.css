@@ -1,8 +1,19 @@
-body {
+:root{
+  --TEXT_SUCCESS: hsl(141, 71%, 48%);
+  --TEXT_DANGER: hsl(348, 100%, 61%);
+  --WHITE: #ffffff;
+  --BLACK: #000000;
+  --LIGHT_BLACK: #1b1b1b;
+}
+body,html {
   background-color: #c0bbbb;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+ion-icon{
+  pointer-events: none;
 }
 
 .container {
@@ -15,6 +26,11 @@ body {
 #todo-list {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   background-color: transparent;
   padding: 20px;
 }
@@ -24,11 +40,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0.125rem;
+  padding: 1rem 0.5rem;
   margin-bottom: 1rem;
   background-color: #fff;
   color: #1b1b1b;
-
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
@@ -87,15 +102,234 @@ body {
   width: 50%;
 }
 
-
-.sorts{
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    gap:0.5rem;
-    margin: 1rem 0;
+.sorts {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
 }
-.sorts h4{
-    margin-block-start: unset !important;
-    margin-block-end: unset !important;
+.sorts h4 {
+  margin-block-start: unset !important;
+  margin-block-end: unset !important;
+}
+.info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.info p {
+  width: fit-content;
+  margin-block-start: unset !important;
+  margin-block-end: unset !important;
+  background-color: var(--WHITE);
+  color: var(--LIGHT_BLACK);
+  padding: 0.5rem 1rem 0rem 1rem;
+  border-radius: 10px;
+}
+.info p span{
+  font-size: 1rem;
+  font-weight: bold;
+}
+.info #total-todos{
+  color: royalblue;
+}
+.info #total-completed{
+  color: var(--TEXT_SUCCESS);
+}
+.info #total-pending{
+  color: var(--TEXT_DANGER);
+}
+
+.delete-todo-btn, .edit-todo-btn{
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.delete-todo-btn{
+  color: var(--TEXT_DANGER);
+}
+.edit-todo-btn{
+  color: royalblue;
+}
+
+/* modal styles start  */
+.modal {
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal::-webkit-scrollbar {
+  display: none;
+}
+.modal.active {
+  display: flex;
+}
+.modal-content {
+  position: relative;
+  background-color: #c0bbbb;
+  padding: 1rem;
+  max-width: 80vw;
+  margin: 3rem auto;
+  width: 60%;
+  border-radius: 5px;
+  border: 2px solid var(--BG_SHADE_LIGHTER);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation: modalAppear 0.5s ease;
+}
+@media (max-width: 768px) {
+  .modal-content {
+    width: 80vw;
+  }
+}
+@-webkit-keyframes modalAppear {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes modalAppear {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  position: relative;
+  border-bottom: 1.5px solid green;
+  color: var(--MAIN_ACCENT);
+}
+.modal-header h2 {
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+}
+.modal-close-btn {
+  height: 2.25rem;
+  width: 2.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  background-color: var(--LIGHT_BLACK);
+  color: var(--TEXT_DANGER);
+  outline: none;
+  border: 1.5px solid var(--WHITE);
+  font-size: x-large;
+  border-radius: 100%;
+  z-index: 9999;
+  transform: scale(1.125);
+  transition: all ease 300ms;
+}
+.modal-close-btn:hover {
+  background-color: var(--TEXT_DANGER);
+  color: var(--WHITE);
+}
+.modal-close-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0px 0px 5px var(--TEXT_DANGER);
+}
+.modal-close-btn > ion-icon {
+  transition: all ease 300ms;
+}
+.modal-close-btn:hover > ion-icon {
+  transform: rotate(180deg);
+}
+.modal-header.to-be-closed {
+  opacity: 0.5;
+  filter: blur(2px);
+}
+.modal-body.to-be-closed {
+  opacity: 0.5;
+  filter: blur(2px);
+}
+.modal-body {
+  height: 40vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  color: var(--WHITE);
+  padding: 0.75rem;
+}
+.modal-body::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+  background-color: var(--BG_SHADE_LIGHTER);
+  border-radius: 10px;
+}
+.modal-footer {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  background-color: #5cb85c !important;
+  color: white;
+}
+/* modal styles end  */
+
+#add-todo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  padding: 20px;
+}
+#edit-todo input {
+  width:100%;
+  flex-wrap: 1;
+  padding: 10px 0px 10px 10px;
+  border: none;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #1b1b1b;
+  font-size: 1rem;
+}
+#edit-todo label{
+  font-size: 1rem;
+  color: #1b1b1b;
+}
+#edit-todo input:focus {
+  outline: 2px solid lightseagreen;
+  outline-offset: 2px;
+}
+#edit-todo button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: lightseagreen;
+  color: #1b1b1b;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+#edit-todo button:hover {
+  background-color: #1b1b1b;
+  color: #fff;
 }
