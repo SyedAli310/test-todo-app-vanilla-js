@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
 :root{
+  --MAIN_BG: #c0bbbb;
   --TEXT_SUCCESS: hsl(141, 71%, 48%);
   --TEXT_DANGER: hsl(348, 100%, 61%);
   --WHITE: #ffffff;
@@ -6,10 +9,11 @@
   --LIGHT_BLACK: #1b1b1b;
 }
 body,html {
-  background-color: #c0bbbb;
+  background-color: var(--MAIN_BG);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 ion-icon{
@@ -173,31 +177,33 @@ ion-icon{
   margin-block-end: unset !important;
   background-color: var(--WHITE);
   color: darkslategrey;
-  padding: 0.5rem 1rem 0rem 1rem;
-  border-radius: 10px;
+  padding: 0.5rem;
+  border-radius: 4px;
 }
 .info p span{
   font-size: 1rem;
   font-weight: bold;
 }
-
+input{
+  accent-color:  rebeccaPurple;
+}
 .info #total-todos{
   color: royalblue;
 }
 .info .total-todos-p{
-  outline: 2px solid royalblue;
+  outline: 1.5px solid royalblue;
 }
 .info #total-completed{
   color: var(--TEXT_SUCCESS);
 }
 .info .total-completed-p{
-  outline: 2px solid var(--TEXT_SUCCESS);
+  outline: 1.5px solid var(--TEXT_SUCCESS);
 }
 .info #total-pending{
   color: var(--TEXT_DANGER);
 }
 .info .total-pending-p{
-  outline: 2px solid var(--TEXT_DANGER);
+  outline: 1.5px solid var(--TEXT_DANGER);
 }
 
 .delete-todo-btn, .edit-todo-btn{
@@ -236,7 +242,7 @@ ion-icon{
 }
 .modal-content {
   position: relative;
-  background-color: #c0bbbb;
+  background-color: var(--MAIN_BG);
   padding: 1rem;
   max-width: 80vw;
   margin: 3rem auto;

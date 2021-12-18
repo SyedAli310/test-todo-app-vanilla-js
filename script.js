@@ -40,7 +40,6 @@ $(document).ready(() => {
   // add todo function
   function addTodo(todo, completed, priority) {
     const todo_id = generateKey(8, true, 4).toLowerCase();
-    const dateAdded = new Date();
     if (!todo || todo.length == 0) {
       alert("Please enter a todo");
       return;
@@ -54,7 +53,8 @@ $(document).ready(() => {
       todo,
       completed,
       priority,
-      dateAdded,
+      dateAdded: new Date(),
+      lastUpdated: new Date(),
     };
     if (newTodo) {
       console.log(newTodo);
@@ -124,6 +124,18 @@ $(document).ready(() => {
     renderTodos(false, false, false);
   });
 
+  // format date function
+  function formatDate(date) {
+    if(new Date(date)){
+      const preFormatted = new Date(date).toDateString().split(' ');
+      preFormatted.shift();
+      preFormatted[1] = preFormatted[1]+', ';
+      return preFormatted.join(' ');
+    } else {
+      return "Some error occured while formatting the date" + date;
+    }
+  }
+
   // Render todos
   function renderTodos(byPriority, byCompleted, byDate) {
     $("#todo-list").html("");
@@ -166,7 +178,7 @@ $(document).ready(() => {
                 <div class="todo-el-body">
                   <span>
                     <span style='color:royalblue;'>Updated:</span> 
-                    <span style='color:unset !important;'>${new Date(todo.dateAdded).toDateString()}, at ${new Date(todo.dateAdded).toLocaleTimeString()}</span>
+                    <span style='color:unset !important;'>${formatDate(todo.dateAdded)} at ${new Date(todo.dateAdded).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})}</span>
                   </span>
                   <h2 class="todo-el-title">
                     ${todo.todo}
@@ -177,7 +189,7 @@ $(document).ready(() => {
                   <div class='date-time'>
                     <span>
                       <span style='color:var(--TEXT_SUCCESS);'>Added:</span> 
-                      <span style='color:unset !important;'>${new Date(todo.dateAdded).toDateString()}, at ${new Date(todo.dateAdded).toLocaleTimeString()}</span>
+                      <span style='color:unset !important;'>${formatDate(todo.dateAdded)} at ${new Date(todo.dateAdded).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})}</span>
                     </span>
                     
                   </div>
