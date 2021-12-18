@@ -9,9 +9,20 @@
     <title>ToDo App</title>
   </head>
   <body>
+    <div class="main-header">
+        <div class="container">
+          <a href="/" style="text-decoration: none;">
+          <h1 id="logo-animated"> 
+            <div style="color: var(--TEXT_SUCCESS);">To</div>
+            <div style="color: var(--TEXT_DANGER);">Do</div>
+            &nbsp;<div style="color: royalblue;">App</div></h1>
+          </a>
+          <button id="open-add-todo" title="Add ToDo" data-title='Add ToDo'>
+            <ion-icon name="add-outline"></ion-icon>
+          </button>
+      </div>
+    </div>
     <main class="container">
-      <button id="open-add-todo">Add todo</button>
-      <hr />
       <div class="sorts">
         <h4>Sort by -</h4>
         <button id="sort-by-priority">Priority</button>

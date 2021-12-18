@@ -103,7 +103,6 @@ $(document).ready(() => {
   }
 
   $("#open-add-todo").click(()=>{
-    console.log("open add todo");
     $(".add-todo-modal").addClass("active");
   })
 
@@ -192,7 +191,7 @@ $(document).ready(() => {
                         ? "var(--TEXT_SUCCESS)"
                         : "var(--TEXT_DANGER)"
                     }'>
-                      ${todo.completed ? "Completed" : "Pending"} 
+                      ${todo.completed ? "<ion-icon name='checkmark-done-outline'></ion-icon> Completed" : "<ion-icon name='time-outline'></ion-icon> Pending"} 
                     </span>
                 </div>
                 <hr style='width:100%;'>
@@ -206,7 +205,7 @@ $(document).ready(() => {
           { hour: "2-digit", minute: "2-digit" }
         )}</span>
                   </span>
-                  <h2 class="todo-el-title">
+                  <h2 class="todo-el-title" style='color:${todo.completed ? "var(--TEXT_SUCCESS)" : "var(--TEXT_DANGER)"}; text-decoration:${todo.completed ? "line-through" : "none"};'>
                     ${todo.todo}
                   </h2>
                 </div>

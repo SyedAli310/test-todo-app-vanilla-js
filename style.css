@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
-:root{
+:root {
   --MAIN_BG: #c0bbbb;
   --TEXT_SUCCESS: hsl(141, 71%, 48%);
   --TEXT_DANGER: hsl(348, 100%, 61%);
@@ -8,15 +8,16 @@
   --BLACK: #000000;
   --LIGHT_BLACK: #1b1b1b;
 }
-body,html {
+body,
+html {
   background-color: var(--MAIN_BG);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-ion-icon{
+ion-icon {
   pointer-events: none;
 }
 
@@ -24,6 +25,109 @@ ion-icon{
   width: 100%;
   max-width: 80vw;
   margin: 0 auto;
+}
+
+.main-header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: var(--MAIN_BG);
+  border-bottom: 1px solid var(--LIGHT_BLACK);
+  z-index: 10;
+}
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+#logo-animated {
+  display: flex;
+  transition: all ease 300ms;
+}
+#logo-animated > div {
+  transition: all ease 300ms;
+}
+#logo-animated:hover > div {
+  animation: wobble 500ms ease-in forwards;
+  transition: all ease 300ms;
+}
+@keyframes wobble {
+  0% {
+    transform: translateY(0%);
+    text-decoration: none;
+  }
+  25% {
+    transform: translateY(10%);
+    text-decoration: line-through;
+  }
+  50% {
+    transform: translateY(-10%);
+    text-decoration: line-through;
+  }
+  75% {
+    transform: translateY(10%);
+    text-decoration: line-through;
+  }
+  100% {
+    transform: translateY(0%);
+    text-decoration: none;
+  }
+}
+#logo-animated:hover > div:nth-child(1) {
+  animation-delay: 0s;
+}
+#logo-animated:hover > div:nth-child(2) {
+  animation-delay: 500ms;
+}
+#logo-animated:hover > div:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.main-header button {
+  position: relative;
+  background-color: var(--TEXT_SUCCESS);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  color: var(--WHITE);
+  cursor: pointer;
+  transition: all ease 300ms;
+}
+.main-header button::after {
+  content: attr(data-title);
+  word-wrap: none;
+  position: absolute;
+  right: 105%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  /* display: none; */
+  opacity: 0;
+  width: max-content;
+  height: auto;
+  padding: 0.5rem;
+  border-radius: 3px;
+  background-color: var(--LIGHT_BLACK);
+  color: var(--WHITE);
+  pointer-events: none;
+  transition: all ease 300ms;
+}
+
+.main-header button:hover::after {
+  /* display: block; */
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+}
+.main-header button:hover {
+  filter: brightness(90%);
+}
+.main-header button ion-icon {
+  font-size: x-large;
+  transition: all ease 300ms;
+}
+.main-header button:hover > ion-icon {
+  transform: rotate(180deg) scale(1.2);
 }
 
 #todo-list {
@@ -53,45 +157,62 @@ ion-icon{
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
+.todo-el:hover{
+  box-shadow: 0px 0px 10px 0px inherit !important;
+}
 
-.todo-el-header{
+.todo-el-header {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.todo-el-priority{
+.todo-el-priority {
   color: royalblue;
   font-weight: bold;
 }
-.todo-status{
+.todo-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.125rem;
   font-weight: bold;
 }
+.todo-status ion-icon {
+  font-size: larger;
+}
 
-.todo-el-body{
+.todo-el-body {
   width: 100%;
 }
-.todo-el-body .todo-el-title{}
+.todo-el-body .todo-el-title {
+  font-weight: bold;
+  font-size: 1.625rem;
+}
 
-.todo-el-footer{
+.todo-el-footer {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap:1rem;
+  gap: 1rem;
 }
-.todo-el-footer .date-time{
+.todo-el-footer .date-time {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.todo-el-footer .cta-buttons{
+.todo-el-footer .cta-buttons {
   width: auto;
   text-align: center;
 }
-
-
+.todo-el-footer .cta-buttons ion-icon {
+  transition: all ease 300ms;
+}
+.todo-el-footer .cta-buttons button:hover > ion-icon{
+  transform: scale(1.2);
+}
 
 #add-todo {
   width: 100%;
@@ -117,14 +238,14 @@ ion-icon{
   color: #1b1b1b;
   font-size: 1rem;
 }
-#prio-selection-realtime-view{
+#prio-selection-realtime-view {
   color: var(--BLACK);
 }
 #add-todo input:focus {
   outline: 2px solid lightseagreen;
   outline-offset: 2px;
 }
-#add-todo label{
+#add-todo label {
   margin-bottom: 0.5rem;
   text-align: start;
 }
@@ -172,7 +293,7 @@ ion-icon{
   margin-block-start: unset !important;
   margin-block-end: unset !important;
 }
-.info{
+.info {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -188,43 +309,44 @@ ion-icon{
   padding: 0.5rem;
   border-radius: 4px;
 }
-.info p span{
+.info p span {
   font-size: 1rem;
   font-weight: bold;
 }
-input{
-  accent-color:  rebeccaPurple;
+input {
+  accent-color: rebeccaPurple;
 }
-.info #total-todos{
+.info #total-todos {
   color: royalblue;
 }
-.info .total-todos-p{
+.info .total-todos-p {
   outline: 1.5px solid royalblue;
 }
-.info #total-completed{
+.info #total-completed {
   color: var(--TEXT_SUCCESS);
 }
-.info .total-completed-p{
+.info .total-completed-p {
   outline: 1.5px solid var(--TEXT_SUCCESS);
 }
-.info #total-pending{
+.info #total-pending {
   color: var(--TEXT_DANGER);
 }
-.info .total-pending-p{
+.info .total-pending-p {
   outline: 1.5px solid var(--TEXT_DANGER);
 }
 
-.delete-todo-btn, .edit-todo-btn{
+.delete-todo-btn,
+.edit-todo-btn {
   background-color: transparent;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-.delete-todo-btn{
+.delete-todo-btn {
   color: var(--TEXT_DANGER);
 }
-.edit-todo-btn{
+.edit-todo-btn {
   color: royalblue;
 }
 
@@ -253,7 +375,7 @@ input{
   background-color: var(--MAIN_BG);
   padding: 1rem;
   max-width: 80vw;
-  margin: 3rem auto;
+  margin: 5rem auto;
   width: 60%;
   border-radius: 5px;
   border: 2px solid var(--BG_SHADE_LIGHTER);
@@ -264,7 +386,7 @@ input{
   .modal-content {
     width: 80vw;
   }
-  .modal-body{
+  .modal-body {
     height: 60vh;
   }
 }
@@ -376,7 +498,7 @@ input{
   padding: 1rem 0;
 }
 #edit-todo input:not([type="checkbox"]) {
-  width:100%;
+  width: 100%;
   flex-wrap: 1;
   padding: 10px 0px 10px 10px;
   border: none;
@@ -386,7 +508,7 @@ input{
   color: #1b1b1b;
   font-size: 1rem;
 }
-#edit-todo label{
+#edit-todo label {
   margin-bottom: 0.25rem;
 }
 
