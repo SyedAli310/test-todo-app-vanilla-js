@@ -1,17 +1,22 @@
 $(document).ready(() => {
+  
+  // App initialization logs
   console.log("%c-> Loading...", "color: royalblue; font-size: 14px;");
   console.log(
     "%cApp Initialized Successfully!",
     "color: limegreen; font-size: 14px;"
   );
+
+  // selectors and variables
   const days = ['Sunday😎', 'Monday🧐', 'Tuesday😒', 'Wednesday🤨', 'Thursday😐', 'Friday😁', 'Saturday😎'];
   const mainHeaderHeight = parseFloat((document.querySelector('.main-header').offsetHeight));
   const sortAndFilter = document.querySelector('.sort-and-info');
   const darkModeSwitch = document.querySelector('#dark-mode-switch');
+  const allModals = document.querySelectorAll(".modal");
+
+  // setting dyanmic height for sort and filter div and dark mode switch(button) 
   sortAndFilter.style.top = `${mainHeaderHeight}px`;
   darkModeSwitch.style.top = `${mainHeaderHeight+2}px`;
-
-  const allModals = document.querySelectorAll(".modal");
 
   // function to generate random id for todo
   function generateKey(tokenLen, hyphen, hyphenPos) {
@@ -40,6 +45,7 @@ $(document).ready(() => {
     return token;
   }
 
+  // getting all todos from local storage or creating new empty array if not found
   let all__todos = JSON.parse(localStorage.getItem("stored__todos")) || [];
   window.onload = renderTodos();
 
@@ -104,14 +110,17 @@ $(document).ready(() => {
     showSliderValUpd();
   }
 
+  // update modal slider value updater
   function showSliderValUpd() {
     $("#prio-selection-realtime-view-upd").text(' '+$("#edit-priority-input").val());
   }
 
+  // add todo modal open handler
   $("#open-add-todo").click(()=>{
     $(".add-todo-modal").addClass("active");
   })
 
+  // sorts dropdown open/close handler
   $('#sort-dropdown-toggle').click(()=>{
     $('.sort-dropdown').toggleClass('active');
     if($('.sort-dropdown').hasClass('active')){
@@ -140,6 +149,7 @@ $(document).ready(() => {
     $(".edit-todo-modal").removeClass("active");
   });
 
+  // different sorting handlers
   $("#sort-by-priority").on("click", () => {
     renderTodos(true, false, false);
   });
@@ -165,6 +175,7 @@ $(document).ready(() => {
     }
   }
 
+  // function to fill today's date and day name
   $('.today-date').html(
     `
     <span>Happy ${days[new Date().getDay()]}</span>
@@ -172,7 +183,7 @@ $(document).ready(() => {
     `)
     
 
-  // Render todos
+  // Render todos from all__todos - (global variable / local storage)
   function renderTodos(byPriority, byCompleted, byDate) {
     $("#todo-list").html("");
     const totalTodos = all__todos.length;
@@ -287,8 +298,9 @@ $(document).ready(() => {
     });
   });
 
-  //light-dark mode handlers
+  // light-dark mode handlers
 
+  // function to switch dark mode
   function switchToDarkMode() {
     $(':root').css('--MAIN_BG', '#000000');
     $(':root').css('--WHITE', '#1b1b1b');
@@ -296,6 +308,7 @@ $(document).ready(() => {
     $(':root').css('--BLACK', '#ffffff');
   }
 
+  // function to switch light mode
   function switchToLightMode() {
     $(':root').css('--MAIN_BG', '#c0bbbb');
     $(':root').css('--WHITE', '#ffffff');
@@ -303,6 +316,7 @@ $(document).ready(() => {
     $(':root').css('--BLACK', '#000000');
   }
 
+  // function to set switch(button) content
   function setSwitchText(){
     $('#dark-mode-switch').html(`
       ${$("#dark-mode-switch").attr("mode").toUpperCase() === "DARK" 
@@ -314,6 +328,7 @@ $(document).ready(() => {
       `);
   }
 
+  // function to check and apply saved mode preference from local storage
   function checkColorMode(){
     const fetchedMode = localStorage.getItem("colorMode");
     if(fetchedMode){
@@ -332,10 +347,11 @@ $(document).ready(() => {
     } else {return};
   }
 
+  // checking for saved mode in local storage on page load
   window.onload = setSwitchText();
   window.onload = checkColorMode();
 
-  //dark mode switcher
+  // light-dark mode switcher
   $("#dark-mode-switch").click(() => {
     if ($("#dark-mode-switch").attr("mode") == "light") {
       $("#dark-mode-switch").attr("mode", "dark");
