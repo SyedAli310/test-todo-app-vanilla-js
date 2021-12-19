@@ -8,24 +8,26 @@
     <link rel="stylesheet" href="style.css" />
     <!-- favicon -->
     <link rel="icon" href="./favicon.png" type="image/x-icon" />
-  
+
     <title>ToDo App</title>
   </head>
   <body>
-    <button id="dark-mode-switch" mode='light'>
+    <button id="dark-mode-switch" mode="light">
       <ion-icon name="sunny-outline"></ion-icon>
     </button>
     <div class="main-header">
-        <div class="container">
-          <a href="/" style="text-decoration: none;">
-          <h1 id="logo-animated"> 
-            <div style="color: var(--TEXT_SUCCESS);">To</div>
-            <div style="color: var(--TEXT_DANGER);">Do</div>
-            &nbsp;<div style="color: royalblue;">App</div></h1>
-          </a>
-          <button id="open-add-todo" title="Add ToDo" data-title='Add ToDo'>
-            <ion-icon name="add-outline"></ion-icon>
-          </button>
+      <div class="container">
+        <a href="/" style="text-decoration: none">
+          <h1 id="logo-animated">
+            <div style="color: var(--TEXT_SUCCESS)">To</div>
+            <div style="color: var(--TEXT_DANGER)">Do</div>
+            &nbsp;
+            <div style="color: royalblue">App</div>
+          </h1>
+        </a>
+        <button id="open-add-todo" title="Add ToDo" data-title="Add ToDo">
+          <ion-icon name="add-outline"></ion-icon>
+        </button>
       </div>
     </div>
 
@@ -39,11 +41,13 @@
           <p class="total-pending-p">
             Pending <span id="total-pending"></span>
           </p>
-      
         </div>
-  
+
         <div class="sorts">
-          <button id="sort-dropdown-toggle"><ion-icon name="funnel-outline"></ion-icon> Sort by <ion-icon name="caret-down-outline"></ion-icon></button>
+          <button id="sort-dropdown-toggle">
+            <ion-icon name="funnel-outline"></ion-icon> Sort by
+            <ion-icon name="caret-down-outline"></ion-icon>
+          </button>
           <ul class="sort-dropdown">
             <li class="sort-dropdown-item" id="sort-by-priority">Priority</li>
             <li class="sort-dropdown-item" id="sort-by-completed">Completed</li>
@@ -79,31 +83,32 @@
               placeholder="Update todo"
             />
             <div class="sec-inps">
-            <label for="edit-priority-input"
-                >Update Priority - <span id="prio-selection-realtime-view-upd"></span
+              <label for="edit-priority-input"
+                >Update Priority -
+                <span id="prio-selection-realtime-view-upd"></span
               ></label>
-            <input
-            type="range"
-            min="1"
-            max="10"
-            step="1"
-            id="edit-priority-input"
-            oninput="javascript:showSliderValUpd(this.value);"
-            onchange="javascript:showSliderValUpd(this.value);"
-            placeholder="Update Priority"
-            list="priority-suggestions"
-          />
-
-            <div class="checkbox-div">
               <input
-                type="checkbox"
-                name="completed"
-                id="edit-completed-checkbox"
-                style="width: min-content"
+                type="range"
+                min="1"
+                max="10"
+                step="1"
+                id="edit-priority-input"
+                oninput="javascript:showSliderValUpd(this.value);"
+                onchange="javascript:showSliderValUpd(this.value);"
+                placeholder="Update Priority"
+                list="priority-suggestions"
               />
-              <label for="edit-completed-checkbox">Completed</label>
+
+              <div class="checkbox-div">
+                <input
+                  type="checkbox"
+                  name="completed"
+                  id="edit-completed-checkbox"
+                  style="width: min-content"
+                />
+                <label for="edit-completed-checkbox">Completed</label>
+              </div>
             </div>
-          </div>
             <button type="submit" id="edit-todo-submit-btn">Update</button>
           </form>
         </div>
@@ -137,7 +142,8 @@
             </datalist>
             <div class="sec-inps">
               <label for="priority-input"
-                >Select Priority - <span id="prio-selection-realtime-view-add"></span
+                >Select Priority -
+                <span id="prio-selection-realtime-view-add"></span
               ></label>
               <input
                 type="range"
@@ -193,10 +199,14 @@
     ></script>
     <script>
       function showSliderValAdd() {
-        $("#prio-selection-realtime-view-add").text(' '+$("#priority-input").val());
+        $("#prio-selection-realtime-view-add").text(
+          " " + $("#priority-input").val()
+        );
       }
       function showSliderValUpd() {
-        $("#prio-selection-realtime-view-upd").text(' '+$("#edit-priority-input").val());
+        $("#prio-selection-realtime-view-upd").text(
+          " " + $("#edit-priority-input").val()
+        );
       }
       showSliderValAdd();
     </script>

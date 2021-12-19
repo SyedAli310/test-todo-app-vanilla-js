@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 :root {
   --MAIN_BG: #c0bbbb;
@@ -14,7 +14,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 ::selection {
   background-color: royalblue;
@@ -48,7 +48,7 @@ ion-icon {
   max-width: 80vw;
   margin: 0 auto;
 }
-#dark-mode-switch{
+#dark-mode-switch {
   position: fixed;
   z-index: 11;
   right: 0.25rem;
@@ -61,7 +61,7 @@ ion-icon {
   border: none;
   box-shadow: 0.5px 1px 2px rgba(0, 0, 0, 0.5);
 }
-.today-date{
+.today-date {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,22 +89,21 @@ ion-icon {
   display: flex;
   transition: all ease 300ms;
 }
-#logo-animated:hover{
+#logo-animated:hover {
   animation: test 1500ms ease-in forwards;
   outline-offset: 0.25rem;
   border-radius: 4px;
 }
 @keyframes test {
-  0%{
+  0% {
     outline: 2px solid var(--TEXT_SUCCESS);
   }
-  50%{
+  50% {
     outline: 2px solid var(--TEXT_DANGER);
   }
-  100%{
+  100% {
     outline: 2px solid royalblue;
   }
-  
 }
 #logo-animated > div {
   transition: all ease 300ms;
@@ -190,20 +189,20 @@ ion-icon {
   transform: rotate(180deg) scale(1.2);
 }
 
-.sort-and-info{
+.sort-and-info {
   width: auto;
   position: sticky;
   background-color: var(--MAIN_BG);
   z-index: 10;
 }
-.sort-and-info .container{
+.sort-and-info .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
 
-#sort-dropdown-toggle{
+#sort-dropdown-toggle {
   position: relative;
   display: flex;
   justify-content: center;
@@ -216,34 +215,34 @@ ion-icon {
   cursor: pointer;
   transition: all ease 300ms;
 }
-#sort-dropdown-toggle:active{
+#sort-dropdown-toggle:active {
   transform: scale(0.95);
 }
 
-#sort-dropdown-toggle:focus-visible{
+#sort-dropdown-toggle:focus-visible {
   outline: 1.5px solid royalblue;
   outline-offset: 1.5px;
 }
-#sort-dropdown-toggle.active{
+#sort-dropdown-toggle.active {
   color: royalblue;
   outline: 1.5px solid royalblue;
   outline-offset: 1.5px;
 }
 
-#sort-dropdown-toggle ion-icon[name='caret-down-outline']{
+#sort-dropdown-toggle ion-icon[name="caret-down-outline"] {
   transition: all ease 300ms;
 }
-#sort-dropdown-toggle.active > ion-icon[name='caret-down-outline']{
+#sort-dropdown-toggle.active > ion-icon[name="caret-down-outline"] {
   transform: rotate(180deg);
 }
 
-.sort-and-info .sorts{
+.sort-and-info .sorts {
   position: relative;
 }
-.sort-and-info .sorts .sort-dropdown{
+.sort-and-info .sorts .sort-dropdown {
   list-style-type: none;
   position: absolute;
-  top:100%;
+  top: 100%;
   /* right: 0; */
   width: auto;
   display: flex;
@@ -261,25 +260,25 @@ ion-icon {
   overflow: hidden;
   transition: all ease 300ms;
 }
-.sort-and-info .sorts .sort-dropdown.active{
+.sort-and-info .sorts .sort-dropdown.active {
   pointer-events: all;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
-.sort-and-info .sorts .sort-dropdown li{
+.sort-and-info .sorts .sort-dropdown li {
   display: inline-block;
   list-style-type: none;
   padding: 1rem 2rem;
   border-bottom: 1px solid royalblue;
-  margin: 0 ;
+  margin: 0;
   cursor: pointer;
   transition: all ease 300ms;
 }
-.sort-and-info .sorts .sort-dropdown li:last-child{
+.sort-and-info .sorts .sort-dropdown li:last-child {
   border-bottom: none;
 }
-.sort-and-info .sorts .sort-dropdown li:hover{
+.sort-and-info .sorts .sort-dropdown li:hover {
   color: var(--WHITE);
   background-color: royalblue;
 }
@@ -311,7 +310,7 @@ ion-icon {
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
-.todo-el:hover{
+.todo-el:hover {
   box-shadow: 0px 0px 10px 0px inherit !important;
 }
 
@@ -364,7 +363,7 @@ ion-icon {
 .todo-el-footer .cta-buttons ion-icon {
   transition: all ease 300ms;
 }
-.todo-el-footer .cta-buttons button:hover > ion-icon{
+.todo-el-footer .cta-buttons button:hover > ion-icon {
   transform: scale(1.2);
 }
 
@@ -541,11 +540,11 @@ input {
     width: 80vw;
   }
   .modal-body {
-    height: 60vh;
+    height: 70vh;
   }
 }
 @media (max-width: 550px) {
-  .sort-and-info .container{
+  .sort-and-info .container {
     padding-top: 1rem;
   }
 }
@@ -622,7 +621,7 @@ input {
   filter: blur(2px);
 }
 .modal-body {
-  height: 40vh;
+  height: 50vh;
   overflow-y: scroll;
   overflow-x: hidden;
   color: var(--WHITE);
@@ -680,7 +679,7 @@ input {
   border: none;
   border-radius: 10px;
   background-color: lightseagreen;
-  color:var(--LIGHT_BLACK);
+  color: var(--LIGHT_BLACK);
   font-size: 1rem;
   transition: all 0.3s ease-in-out;
 }
