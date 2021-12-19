@@ -9,7 +9,7 @@ $(document).ready(() => {
   const sortAndFilter = document.querySelector('.sort-and-info');
   const darkModeSwitch = document.querySelector('#dark-mode-switch');
   sortAndFilter.style.top = `${mainHeaderHeight}px`;
-  darkModeSwitch.style.top = `${mainHeaderHeight}px`;
+  darkModeSwitch.style.top = `${mainHeaderHeight+2}px`;
 
   const allModals = document.querySelectorAll(".modal");
 
@@ -299,7 +299,14 @@ $(document).ready(() => {
   }
 
   function setSwitchText(){
-    $('#dark-mode-switch').text($("#dark-mode-switch").attr("mode").toUpperCase());
+    $('#dark-mode-switch').html(`
+      ${$("#dark-mode-switch").attr("mode").toUpperCase() === "DARK" 
+      ? 
+      "<ion-icon name='sunny-outline'></ion-icon>"
+      :
+      "<ion-icon name='moon-outline'></ion-icon>"
+    }
+      `);
   }
 
   function checkColorMode(){
@@ -338,5 +345,5 @@ $(document).ready(() => {
       localStorage.setItem("colorMode", "light");
     }
   });
-  
+
 });

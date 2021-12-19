@@ -16,7 +16,29 @@ html {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+::selection {
+  background-color: royalblue;
+  color: var(--WHITE);
+}
+/* width */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+/* Track */
+body::-webkit-scrollbar-track {
+  background: var(--WHITE);
+}
 
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background-color: royalblue;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--BLACK);
+}
 ion-icon {
   pointer-events: none;
 }
@@ -29,13 +51,15 @@ ion-icon {
 #dark-mode-switch{
   position: fixed;
   z-index: 11;
-  right: 0;
-  width: 50px;
-  height: 50px;
-  background-color: var(--WHITE);
-  border-radius: 50%;
-  color: var(--LIGHT_BLACK);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  right: 0.25rem;
+  width: auto;
+  height: auto;
+  font-size: smaller;
+  background-color: var(--LIGHT_BLACK);
+  border-radius: 4px;
+  color: var(--WHITE);
+  border: none;
+  box-shadow: 0.5px 1px 2px rgba(0, 0, 0, 0.5);
 }
 .today-date{
   font-size: 1.5rem;
