@@ -7,7 +7,9 @@ $(document).ready(() => {
   const days = ['Sunday😎', 'Monday🧐', 'Tuesday😒', 'Wednesday🤨', 'Thursday😐', 'Friday😁', 'Saturday😎'];
   const mainHeaderHeight = parseFloat((document.querySelector('.main-header').offsetHeight));
   const sortAndFilter = document.querySelector('.sort-and-info');
+  const darkModeSwitch = document.querySelector('#dark-mode-switch');
   sortAndFilter.style.top = `${mainHeaderHeight}px`;
+  darkModeSwitch.style.top = `${mainHeaderHeight}px`;
 
   const allModals = document.querySelectorAll(".modal");
 
@@ -280,27 +282,61 @@ $(document).ready(() => {
     });
   });
 
-  function setSwitch(){
-    $('#dark-mode-switch').text($("#dark-mode-switch").attr("mode"))
+  //light-dark mode handlers
+
+  function switchToDarkMode() {
+    $(':root').css('--MAIN_BG', '#000000');
+    $(':root').css('--WHITE', '#1b1b1b');
+    $(':root').css('--LIGHT_BLACK', '#ffffff');
+    $(':root').css('--BLACK', '#ffffff');
   }
-  setSwitch()
+
+  function switchToLightMode() {
+    $(':root').css('--MAIN_BG', '#c0bbbb');
+    $(':root').css('--WHITE', '#ffffff');
+    $(':root').css('--LIGHT_BLACK', '#1b1b1b');
+    $(':root').css('--BLACK', '#000000');
+  }
+
+  function setSwitchText(){
+    $('#dark-mode-switch').text($("#dark-mode-switch").attr("mode").toUpperCase());
+  }
+
+  function checkColorMode(){
+    const fetchedMode = localStorage.getItem("colorMode");
+    if(fetchedMode){
+      if(fetchedMode === "dark"){
+        $("#dark-mode-switch").attr("mode","dark");
+        // console.log('setting dark mode');
+        switchToDarkMode();
+        setSwitchText();
+      }
+      else if (fetchedMode === "light"){
+        $("#dark-mode-switch").attr("mode","light");
+        // console.log('setting light mode');
+        switchToLightMode();
+        setSwitchText();
+      }
+    } else {return};
+  }
+
+  window.onload = setSwitchText();
+  window.onload = checkColorMode();
+
   //dark mode switcher
   $("#dark-mode-switch").click(() => {
     if ($("#dark-mode-switch").attr("mode") == "light") {
       $("#dark-mode-switch").attr("mode", "dark");
-      $(':root').css('--MAIN_BG', '#000000');
-      $(':root').css('--WHITE', '#1b1b1b');
-      $(':root').css('--LIGHT_BLACK', '#ffffff');
-      $(':root').css('--BLACK', '#ffffff');
-      setSwitch();
+      switchToDarkMode();
+      setSwitchText();
+      localStorage.setItem("colorMode", "dark");
     } 
     else if($("#dark-mode-switch").attr("mode") == "dark") {
       $("#dark-mode-switch").attr("mode", "light");
-      $(':root').css('--MAIN_BG', '#c0bbbb');
-      $(':root').css('--WHITE', '#ffffff');
-      $(':root').css('--LIGHT_BLACK', '#1b1b1b');
-      $(':root').css('--BLACK', '#000000');
-      setSwitch();
+      switchToLightMode();
+      setSwitchText();
+      localStorage.setItem("colorMode", "light");
     }
   });
+  
 });
