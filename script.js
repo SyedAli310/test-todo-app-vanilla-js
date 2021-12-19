@@ -165,7 +165,12 @@ $(document).ready(() => {
     }
   }
 
-  $('.today-date').text(formatDate(new Date())+ ' - Happy '+days[new Date().getDay()]);
+  $('.today-date').html(
+    `
+    <span>Happy ${days[new Date().getDay()]}</span>
+    <span style='color:royalblue;'>${formatDate(new Date())}</span>
+    `)
+    
 
   // Render todos
   function renderTodos(byPriority, byCompleted, byDate) {
