@@ -1,5 +1,4 @@
 $(document).ready(() => {
-  
   // App initialization logs
   console.log("%c-> Loading...", "color: royalblue; font-size: 14px;");
   console.log(
@@ -8,15 +7,25 @@ $(document).ready(() => {
   );
 
   // selectors and variables
-  const days = ['Sunday😎', 'Monday🧐', 'Tuesday😒', 'Wednesday🤨', 'Thursday😐', 'Friday😁', 'Saturday😎'];
-  const mainHeaderHeight = parseFloat((document.querySelector('.main-header').offsetHeight));
-  const sortAndFilter = document.querySelector('.sort-and-info');
-  const darkModeSwitch = document.querySelector('#dark-mode-switch');
+  const days = [
+    "Sunday😎",
+    "Monday🧐",
+    "Tuesday😒",
+    "Wednesday🤨",
+    "Thursday😐",
+    "Friday😁",
+    "Saturday😎",
+  ];
+  const mainHeaderHeight = parseFloat(
+    document.querySelector(".main-header").offsetHeight
+  );
+  const sortAndFilter = document.querySelector(".sort-and-info");
+  const darkModeSwitch = document.querySelector("#dark-mode-switch");
   const allModals = document.querySelectorAll(".modal");
 
-  // setting dyanmic height for sort and filter div and dark mode switch(button) 
+  // setting dyanmic height for sort and filter div and dark mode switch(button)
   sortAndFilter.style.top = `${mainHeaderHeight}px`;
-  darkModeSwitch.style.top = `${mainHeaderHeight+2}px`;
+  darkModeSwitch.style.top = `${mainHeaderHeight + 2}px`;
 
   // function to generate random id for todo
   function generateKey(tokenLen, hyphen, hyphenPos) {
@@ -112,23 +121,25 @@ $(document).ready(() => {
 
   // update modal slider value updater
   function showSliderValUpd() {
-    $("#prio-selection-realtime-view-upd").text(' '+$("#edit-priority-input").val());
+    $("#prio-selection-realtime-view-upd").text(
+      " " + $("#edit-priority-input").val()
+    );
   }
 
   // add todo modal open handler
-  $("#open-add-todo").click(()=>{
+  $("#open-add-todo").click(() => {
     $(".add-todo-modal").addClass("active");
-  })
+  });
 
   // sorts dropdown open/close handler
-  $('#sort-dropdown-toggle').click(()=>{
-    $('.sort-dropdown').toggleClass('active');
-    if($('.sort-dropdown').hasClass('active')){
-      $('#sort-dropdown-toggle').addClass('active');
-    }else{
-      $('#sort-dropdown-toggle').removeClass('active');
+  $("#sort-dropdown-toggle").click(() => {
+    $(".sort-dropdown").toggleClass("active");
+    if ($(".sort-dropdown").hasClass("active")) {
+      $("#sort-dropdown-toggle").addClass("active");
+    } else {
+      $("#sort-dropdown-toggle").removeClass("active");
     }
-  })
+  });
 
   // edit todo submit handler
   $("#edit-todo").on("submit", (e) => {
@@ -176,12 +187,12 @@ $(document).ready(() => {
   }
 
   // function to fill today's date and day name
-  $('.today-date').html(
+  $(".today-date").html(
     `
     <span>Happy ${days[new Date().getDay()]}</span>
     <span style='color:royalblue;'>${formatDate(new Date())}</span>
-    `)
-    
+    `
+  );
 
   // Render todos from all__todos - (global variable / local storage)
   function renderTodos(byPriority, byCompleted, byDate) {
@@ -224,37 +235,42 @@ $(document).ready(() => {
                         ? "var(--TEXT_SUCCESS)"
                         : "var(--TEXT_DANGER)"
                     }'>
-                      ${todo.completed ? "<ion-icon name='checkmark-done-outline'></ion-icon> Completed" : "<ion-icon name='time-outline'></ion-icon> Pending"} 
+                      ${
+                        todo.completed
+                          ? "<ion-icon name='checkmark-done-outline'></ion-icon> Completed"
+                          : "<ion-icon name='time-outline'></ion-icon> Pending"
+                      } 
                     </span>
                 </div>
                 <hr style='width:100%;'>
                 <div class="todo-el-body">
-                  <span>
-                    <span style='color:royalblue;'>Updated:</span> 
+                <div class='date-time'>
+                 
+                    <span style='color:royalblue;'>Last Updated:</span> 
                     <span style='color:unset !important;'>${formatDate(
                       todo.lastUpdated
                     )} at ${new Date(todo.lastUpdated).toLocaleTimeString(
           navigator.language,
           { hour: "2-digit", minute: "2-digit" }
         )}</span>
-                  </span>
-                  <h2 class="todo-el-title" style='color:${todo.completed ? "var(--TEXT_SUCCESS)" : "var(--TEXT_DANGER)"}; text-decoration:${todo.completed ? "line-through" : "none"};'>
+                </div>
+                  <h2 class="todo-el-title" style='color:${
+                    todo.completed
+                      ? "var(--TEXT_SUCCESS)"
+                      : "var(--TEXT_DANGER)"
+                  }; text-decoration:${
+          todo.completed ? "line-through" : "none"
+        };'>
                     ${todo.todo}
                   </h2>
                 </div>
                 
                 <div class="todo-el-footer">
                   <div class='date-time'>
-                    <span>
                       <span style='color:var(--TEXT_SUCCESS);'>Added:</span> 
-                      <span style='color:unset !important;'>${formatDate(
-                        todo.dateAdded
-                      )} at ${new Date(todo.dateAdded).toLocaleTimeString(
-          navigator.language,
-          { hour: "2-digit", minute: "2-digit" }
-        )}</span>
-                    </span>
-                    
+                      <span style='color:unset !important;'>
+                      ${formatDate(todo.dateAdded)} at ${new Date(todo.dateAdded).toLocaleTimeString(navigator.language,{ hour: "2-digit", minute: "2-digit" })}
+                      </span>
                   </div>
                   <div class='cta-buttons'>
                     <button class='delete-todo-btn' todo-id='${
@@ -302,49 +318,49 @@ $(document).ready(() => {
 
   // function to switch dark mode
   function switchToDarkMode() {
-    $(':root').css('--MAIN_BG', '#000000');
-    $(':root').css('--WHITE', '#1b1b1b');
-    $(':root').css('--LIGHT_BLACK', '#ffffff');
-    $(':root').css('--BLACK', '#ffffff');
+    $(":root").css("--MAIN_BG", "#000000");
+    $(":root").css("--WHITE", "#1b1b1b");
+    $(":root").css("--LIGHT_BLACK", "#ffffff");
+    $(":root").css("--BLACK", "#ffffff");
   }
 
   // function to switch light mode
   function switchToLightMode() {
-    $(':root').css('--MAIN_BG', '#c0bbbb');
-    $(':root').css('--WHITE', '#ffffff');
-    $(':root').css('--LIGHT_BLACK', '#1b1b1b');
-    $(':root').css('--BLACK', '#000000');
+    $(":root").css("--MAIN_BG", "#c0bbbb");
+    $(":root").css("--WHITE", "#ffffff");
+    $(":root").css("--LIGHT_BLACK", "#1b1b1b");
+    $(":root").css("--BLACK", "#000000");
   }
 
   // function to set switch(button) content
-  function setSwitchText(){
-    $('#dark-mode-switch').html(`
-      ${$("#dark-mode-switch").attr("mode").toUpperCase() === "DARK" 
-      ? 
-      "<ion-icon name='sunny-outline'></ion-icon>"
-      :
-      "<ion-icon name='moon-outline'></ion-icon>"
-    }
+  function setSwitchText() {
+    $("#dark-mode-switch").html(`
+      ${
+        $("#dark-mode-switch").attr("mode").toUpperCase() === "DARK"
+          ? "<ion-icon name='sunny-outline'></ion-icon>"
+          : "<ion-icon name='moon-outline'></ion-icon>"
+      }
       `);
   }
 
   // function to check and apply saved mode preference from local storage
-  function checkColorMode(){
+  function checkColorMode() {
     const fetchedMode = localStorage.getItem("colorMode");
-    if(fetchedMode){
-      if(fetchedMode === "dark"){
-        $("#dark-mode-switch").attr("mode","dark");
+    if (fetchedMode) {
+      if (fetchedMode === "dark") {
+        $("#dark-mode-switch").attr("mode", "dark");
         // console.log('setting dark mode');
         switchToDarkMode();
         setSwitchText();
-      }
-      else if (fetchedMode === "light"){
-        $("#dark-mode-switch").attr("mode","light");
+      } else if (fetchedMode === "light") {
+        $("#dark-mode-switch").attr("mode", "light");
         // console.log('setting light mode');
         switchToLightMode();
         setSwitchText();
       }
-    } else {return};
+    } else {
+      return;
+    }
   }
 
   // checking for saved mode in local storage on page load
@@ -358,13 +374,11 @@ $(document).ready(() => {
       switchToDarkMode();
       setSwitchText();
       localStorage.setItem("colorMode", "dark");
-    } 
-    else if($("#dark-mode-switch").attr("mode") == "dark") {
+    } else if ($("#dark-mode-switch").attr("mode") == "dark") {
       $("#dark-mode-switch").attr("mode", "light");
       switchToLightMode();
       setSwitchText();
       localStorage.setItem("colorMode", "light");
     }
   });
-
 });

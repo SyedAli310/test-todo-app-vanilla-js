@@ -269,7 +269,7 @@ ion-icon {
 .sort-and-info .sorts .sort-dropdown li {
   display: inline-block;
   list-style-type: none;
-  padding: 1rem 2rem;
+  padding: 0.625rem 1.625rem;
   border-bottom: 1px solid royalblue;
   margin: 0;
   cursor: pointer;
@@ -351,10 +351,9 @@ ion-icon {
   flex-wrap: wrap;
   gap: 1rem;
 }
-.todo-el-footer .date-time {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.todo-el-footer .date-time, .todo-el-body .date-time {
+  font-weight: lighter;
+  font-size: smaller;
 }
 .todo-el-footer .cta-buttons {
   width: auto;
