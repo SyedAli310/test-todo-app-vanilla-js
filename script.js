@@ -56,7 +56,13 @@ $(document).ready(() => {
 
   // getting all todos from local storage or creating new empty array if not found
   let all__todos = JSON.parse(localStorage.getItem("stored__todos")) || [];
-  window.onload = renderTodos();
+  window.onload = renderTodos(localStorage.getItem("sort__filter") || '');
+  window.onload = addSortedByText();
+
+  // add sorted by text to the button span
+  function addSortedByText() {
+    $('#sorted-by-span').text(localStorage.getItem("sort__filter") ? localStorage.getItem("sort__filter").replace('by',' : ') : '');
+  }
 
   // add todo function
   function addTodo(todo, completed, priority) {
@@ -162,16 +168,34 @@ $(document).ready(() => {
 
   // different sorting handlers
   $("#sort-by-priority").on("click", () => {
-    renderTodos(true, false, false);
+    localStorage.setItem("sort__filter","byPriority");
+    renderTodos('byPriority');
+    addSortedByText()
   });
   $("#sort-by-completed").on("click", () => {
-    renderTodos(false, true, false);
+    localStorage.setItem("sort__filter","byCompleted")
+    renderTodos('byCompleted');
+    addSortedByText()
+  });
+  $("#sort-by-pending").on("click", () => {
+    localStorage.setItem("sort__filter","byPending")
+    renderTodos('byPending');
+    addSortedByText()
   });
   $("#sort-by-oldest").on("click", () => {
-    renderTodos(false, false, true);
+    localStorage.setItem("sort__filter","byOldest")
+    renderTodos('byOldest');
+    addSortedByText()
   });
   $("#sort-by-latest").on("click", () => {
-    renderTodos(false, false, false);
+    localStorage.setItem("sort__filter","byLatest")
+    renderTodos('byLatest');
+    addSortedByText()
+  });
+  $("#sort-by-latest-upd").on("click", () => {
+    localStorage.setItem("sort__filter","byUpdated")
+    renderTodos('byUpdated');
+    addSortedByText()
   });
 
   // format date function
@@ -195,7 +219,7 @@ $(document).ready(() => {
   );
 
   // Render todos from all__todos - (global variable / local storage)
-  function renderTodos(byPriority, byCompleted, byDate) {
+  function renderTodos(sortBy) {
     $("#todo-list").html("");
     const totalTodos = all__todos.length;
     const completedTodos = all__todos.filter(
@@ -208,17 +232,28 @@ $(document).ready(() => {
     $("#total-completed").text(completedTodos);
     $("#total-pending").text(pendingTodos);
     if (all__todos.length > 0) {
-      if (byPriority) {
+      if (sortBy === 'byPriority') {
         all__todos.sort((a, b) => a.priority - b.priority);
-      } else if (byCompleted) {
+      } 
+      else if (sortBy === 'byCompleted') {
         all__todos.sort((a, b) => b.completed - a.completed);
-      } else if (byDate) {
+      }  
+      else if (sortBy === 'byPending') {
+        all__todos.sort((a, b) => a.completed - b.completed);
+      } 
+      else if (sortBy === 'byOldest') {
         all__todos.sort(
           (a, b) => new Date(a.dateAdded) - new Date(b.dateAdded)
         );
-      } else {
+      } 
+      else if(sortBy === 'byLatest') {
         all__todos.sort(
           (a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)
+        );
+      }
+      else if(sortBy === 'byUpdated') {
+        all__todos.sort(
+          (a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated)
         );
       }
       all__todos.forEach((todo, index) => {
