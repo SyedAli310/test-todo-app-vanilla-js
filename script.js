@@ -289,7 +289,7 @@ $(document).ready(() => {
                     )} at ${new Date(todo.lastUpdated).toLocaleTimeString(
           navigator.language,
           { hour: "2-digit", minute: "2-digit" }
-        )}</span>
+        ).replace('AM','a.m.').replace('PM','p.m.')}</span>
                 </div>
                   <h2 class="todo-el-title" style='color:${
                     todo.completed
@@ -306,7 +306,7 @@ $(document).ready(() => {
                   <div class='date-time'>
                       <span style='color:var(--TEXT_SUCCESS);'>Added:</span> 
                       <span style='color:unset !important;'>
-                      ${formatDate(todo.dateAdded)} at ${new Date(todo.dateAdded).toLocaleTimeString(navigator.language,{ hour: "2-digit", minute: "2-digit" })}
+                      ${formatDate(todo.dateAdded)} at ${new Date(todo.dateAdded).toLocaleTimeString(navigator.language,{ hour: "2-digit", minute: "2-digit" }).replace('AM','a.m.').replace('PM','p.m.')}
                       </span>
                   </div>
                   <div class='cta-buttons'>
