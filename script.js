@@ -24,8 +24,8 @@ $(document).ready(() => {
   const allModals = document.querySelectorAll(".modal");
 
   // setting dyanmic height for sort and filter div and dark mode switch(button)
-  sortAndFilter.style.top = `${mainHeaderHeight}px`;
-  darkModeSwitch.style.top = `${mainHeaderHeight + 2}px`;
+  window.onload = sortAndFilter.style.top = `${mainHeaderHeight}px`;
+  window.onload = darkModeSwitch.style.top = `${mainHeaderHeight + 2}px`;
 
   // function to generate random id for todo
   function generateKey(tokenLen, hyphen, hyphenPos) {
@@ -56,6 +56,8 @@ $(document).ready(() => {
 
   // getting all todos from local storage or creating new empty array if not found
   let all__todos = JSON.parse(localStorage.getItem("stored__todos")) || [];
+
+  // setting stored values (if any) from local storage to the page onload
   window.onload = renderTodos(localStorage.getItem("sort__filter") || '');
   window.onload = addSortedByText();
 
