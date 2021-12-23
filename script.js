@@ -92,7 +92,7 @@ $(document).ready(() => {
       $("#todo-input").val("");
       $("#priority-input").val("");
       $(".add-todo-modal").removeClass("active");
-      renderTodos();
+      renderTodos(localStorage.getItem("sort__filter") || '');
     }
   }
 
@@ -109,7 +109,7 @@ $(document).ready(() => {
   function deleteTodo(id) {
     all__todos = all__todos.filter((todo) => todo.id !== id);
     localStorage.setItem("stored__todos", JSON.stringify(all__todos));
-    renderTodos();
+    renderTodos(localStorage.getItem("sort__filter") || '');
   }
 
   // edit todo function
@@ -164,7 +164,7 @@ $(document).ready(() => {
     toBeEdited.lastUpdated = new Date();
     console.log(toBeEdited);
     localStorage.setItem("stored__todos", JSON.stringify(all__todos));
-    renderTodos();
+    renderTodos(localStorage.getItem("sort__filter") || '');
     $(".edit-todo-modal").removeClass("active");
   });
 
