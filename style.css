@@ -251,7 +251,7 @@ ion-icon {
   transform: translateY(20%);
   flex-direction: column;
   background-color: var(--MAIN_BG);
-  outline: 1.25px solid var(--LIGHT_BLACK);
+  outline: 1.25px solid royalblue;
   color: var(--BLACK);
   z-index: 10;
   border-radius: 10px;
@@ -269,7 +269,7 @@ ion-icon {
 .sort-and-info .sorts .sort-dropdown li {
   display: inline-block;
   list-style-type: none;
-  padding: 0.625rem 2rem;
+  padding: 0.625rem 2.5rem;
   border-bottom: 1px solid royalblue;
   margin: 0;
   cursor: pointer;

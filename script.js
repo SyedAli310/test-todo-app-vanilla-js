@@ -324,8 +324,8 @@ $(document).ready(() => {
                 </div>
                 `;
         todo.completed
-          ? (todo_li.style.boxShadow = "3px 3px 0px var(--TEXT_SUCCESS)")
-          : (todo_li.style.boxShadow = "3px 3px 0px var(--TEXT_DANGER)");
+          ? (todo_li.style.boxShadow = "-3px 3px 0px var(--TEXT_SUCCESS)")
+          : (todo_li.style.boxShadow = "-3px 3px 0px var(--TEXT_DANGER)");
         $("#todo-list").append(todo_li);
 
         $(".delete-todo-btn").click((e) => {
