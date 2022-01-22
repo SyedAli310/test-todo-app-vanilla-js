@@ -89,22 +89,6 @@ ion-icon {
   display: flex;
   transition: all ease 300ms;
 }
-#logo-animated:hover {
-  animation: test 1500ms ease-in forwards;
-  outline-offset: 0.25rem;
-  border-radius: 4px;
-}
-@keyframes test {
-  0% {
-    outline: 2px solid var(--TEXT_SUCCESS);
-  }
-  50% {
-    outline: 2px solid var(--TEXT_DANGER);
-  }
-  100% {
-    outline: 2px solid royalblue;
-  }
-}
 #logo-animated > div {
   transition: all ease 300ms;
 }
